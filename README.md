@@ -4,7 +4,7 @@ Project created to show the use of microservices.
 
 ## Application Flux
 
-![App Flux]()
+![App Flux](https://github.com/nishidabruno/microservices-courses/blob/main/flux.png)
 
 ## Technologies used
 
