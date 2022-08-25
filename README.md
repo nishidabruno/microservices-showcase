@@ -1,16 +1,10 @@
 # Microservices
 
-Project created to showcase of using microservices in the back-end with the purchases and classroom.
-
-## Functionalities
+Project created to show the use of microservices.
 
 ## Application Flux
 
-![App Flux](https://i.ibb.co/10KJzDn/Screen-Shot-2022-05-26-at-14-57-47.png)
-
-## Demo
-
-![App Flux](https://i.ibb.co/10KJzDn/Screen-Shot-2022-05-26-at-14-57-47.png)
+![App Flux]()
 
 ## Technologies used
 
