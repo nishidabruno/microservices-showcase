@@ -1,14 +1,11 @@
-import { Fragment } from "react";
-import { Popover, Transition } from "@headlessui/react";
-import { MenuIcon, XIcon } from "@heroicons/react/outline";
-import Link from "next/link";
+import { Fragment } from 'react';
+import Link from 'next/link';
 import { useUser } from '@auth0/nextjs-auth0'
+import { Popover, Transition } from '@headlessui/react';
+import { MenuIcon, XIcon } from '@heroicons/react/outline';
 
 const navigation = [
-  { name: 'Faça sua matrícula', href: '/enroll' },
-  { name: 'Nosso blog', href: '#' },
-  { name: 'Histórias de alunos', href: '#' },
-  { name: 'Sobre a empresa', href: '#' },
+  { name: 'Enroll now', href: '/enroll' },
 ]
 
 export function Header() {
@@ -42,13 +39,14 @@ export function Header() {
             </div>
             <div className="hidden space-x-8 md:flex md:ml-10">
               {navigation.map((item) => (
-                <a
+                <Link
                   key={item.name}
                   href={item.href}
-                  className="text-base font-medium text-white hover:text-gray-300"
                 >
-                  {item.name}
-                </a>
+                  <a className="text-base font-medium text-white hover:text-gray-300">
+                    {item.name}
+                  </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -56,16 +54,16 @@ export function Header() {
           {user ? (
             <div className="hidden md:flex md:items-center md:space-x-6">
               <Link href="/app/courses">
-                <a className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-violet-600 hover:bg-violet-700">Meus cursos</a>
+                <a className="inline-flex items-center px-4 py-1 border border-transparent text-base font-medium rounded-md text-white bg-cyan-500 hover:bg-cyan-600">My courses</a>
               </Link>
               <Link href="/api/auth/logout">
-                <a className="text-base font-medium text-white hover:text-gray-300">Sair do app</a>
+                <a className="text-base font-medium text-white hover:text-gray-300">Logout</a>
               </Link>
             </div>
           ) : (
             <div className="hidden md:flex md:items-center md:space-x-6">
               <Link href="/api/auth/login">
-                <a className="text-base font-medium text-white hover:text-gray-300">Minha conta</a>
+                <a className="text-base font-medium text-white hover:text-gray-300">Login</a>
               </Link>
             </div>
           )}
@@ -112,20 +110,17 @@ export function Header() {
                 ))}
               </div>
               <div className="mt-6 px-5">
-                <a
-                  href="#"
-                  className="block text-center w-full py-3 px-4 rounded-md shadow bg-gradient-to-r from-teal-500 to-cyan-600 text-white font-medium hover:from-teal-600 hover:to-cyan-700"
-                >
-                  Start free trial
-                </a>
-              </div>
-              <div className="mt-6 px-5">
-                <p className="text-center text-base font-medium text-gray-500">
-                  Existing customer?{' '}
-                  <a href="#" className="text-gray-900 hover:underline">
-                    Login
-                  </a>
-                </p>
+                {
+                  user ? (
+                    <Link href="/api/auth/logout">
+                      <a className="block text-center w-full py-3 px-4 rounded-md shadow bg-gradient-to-r from-teal-500 to-cyan-600 text-white font-medium hover:from-teal-600 hover:to-cyan-700">Logout</a>
+                    </Link>
+                  ) : (
+                    <Link href="/api/auth/login">
+                      <a className="block text-center w-full py-3 px-4 rounded-md shadow bg-gradient-to-r from-teal-500 to-cyan-600 text-white font-medium hover:from-teal-600 hover:to-cyan-700">Login</a>
+                    </Link>
+                  )
+                }
               </div>
             </div>
           </div>

@@ -1,8 +1,18 @@
-import { CashIcon, ChatIcon, CheckCircleIcon, ChevronRightIcon, ClockIcon, DocumentTextIcon, SupportIcon } from '@heroicons/react/solid'
-import Head from "next/head";
+import Head from 'next/head';
+import {
+  CashIcon,
+  ChatIcon,
+  CheckCircleIcon,
+  ChevronRightIcon,
+  ClockIcon,
+  DocumentTextIcon,
+  SupportIcon
+} from '@heroicons/react/solid'
+
+import { withApollo } from '../lib/withApollo';
+
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
-import { withApollo } from '../lib/withApollo';
 
 const advantages = [
   {
@@ -101,7 +111,7 @@ function Home() {
   return (
     <>
       <Head>
-        <title>Cursos de programação</title>
+        <title>Programming Courses</title>
         <link rel="shortcut icon" href="favicon.png" type="image/png" />
       </Head>
 
@@ -119,15 +129,15 @@ function Home() {
                         className="inline-flex items-center text-white bg-black rounded-full p-1 pr-2 sm:text-base lg:text-sm xl:text-base hover:text-gray-200"
                       >
                         <span className="px-3 py-0.5 text-white text-xs font-semibold leading-5 uppercase tracking-wide bg-gradient-to-r from-teal-500 to-cyan-600 rounded-full">
-                          Estamos contratando
+                          We are hiring
                         </span>
-                        <span className="ml-4 text-sm">Veja nossas vagas</span>
+                        <span className="ml-4 text-sm">See positions</span>
                         <ChevronRightIcon className="ml-2 w-5 h-5 text-gray-500" aria-hidden="true" />
                       </a>
                       <h1 className="mt-4 text-4xl tracking-tight font-extrabold text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl">
-                        <span className="block">Cursos de</span>
+                        <span className="block">Programming</span>
                         <span className="pb-3 block bg-clip-text text-transparent bg-gradient-to-r from-teal-200 to-cyan-400 sm:pb-5">
-                          programação
+                          courses
                         </span>
                       </h1>
                       <p className="text-base text-gray-300 sm:text-xl lg:text-lg xl:text-xl">

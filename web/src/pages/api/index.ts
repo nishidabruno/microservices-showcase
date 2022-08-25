@@ -1,10 +1,10 @@
+import type { NextApiRequest, NextApiResponse } from 'next';
 import { getAccessToken } from '@auth0/nextjs-auth0';
 import httpProxyMiddleware from 'next-http-proxy-middleware';
-import type { NextApiRequest, NextApiResponse } from 'next';
 
 export const config = {
   api: {
-    parser: false,
+    bodyParser: false,
   }
 }
 

@@ -1,8 +1,6 @@
 version: '3'
 
 services:
-  # Application
-
   database:
     image: 'bitnami/postgresql'
     ports:

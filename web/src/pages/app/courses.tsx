@@ -1,11 +1,13 @@
-import { withPageAuthRequired } from "@auth0/nextjs-auth0"
-import Head from "next/head";
-import { CalendarIcon } from "@heroicons/react/solid";
-import { Header } from "../../components/Header";
-import { Footer } from "../../components/Footer";
-import { withApollo } from "../../lib/withApollo";
-import { useMe } from "../../graphql/generated/page";
-import Link from "next/link";
+import Head from 'next/head';
+import Link from 'next/link';
+import { withPageAuthRequired } from '@auth0/nextjs-auth0'
+import { CalendarIcon } from '@heroicons/react/solid';
+
+import { useMe } from '../../graphql/generated/pagePrivate';
+
+import { Header } from '../../components/Header';
+import { Footer } from '../../components/Footer';
+import { withApollo } from '../../lib/withApollo';
 
 const applicants = [
   {
@@ -28,7 +30,7 @@ const applicants = [
   },
 ];
 
-const dateFormatter = new Intl.DateTimeFormat('pt-BR', {
+const dateFormatter = new Intl.DateTimeFormat('en-US', {
   day: '2-digit',
   month: 'long',
   year: 'numeric',
@@ -40,7 +42,7 @@ function Courses() {
   return (
     <>
       <Head>
-        <title>Meus cursos</title>
+        <title>My courses</title>
         <link rel="shortcut icon" href="favicon.png" type="image/png" />
       </Head>
 
@@ -49,9 +51,9 @@ function Courses() {
           <Header />
           <main className="py-20 max-w-7xl mx-auto ">
             <div className="text-center mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl">
-              <h2 className="text-base font-semibold tracking-wider text-cyan-600 uppercase">Estudar</h2>
+              <h2 className="text-base font-semibold tracking-wider text-cyan-600 uppercase">Study</h2>
               <p className="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
-                Meus cursos
+                My courses
               </p>
             </div>
 
@@ -63,14 +65,14 @@ function Courses() {
                       <div className="min-w-0 flex-1 sm:flex sm:items-center sm:justify-between">
                         <div className="truncate">
                           <div className="flex text-sm">
-                            <p className="font-medium text-indigo-600 truncate">{enrollment.course.title}</p>
-                            <p className="ml-1 flex-shrink-0 font-normal text-gray-500">em Programação</p>
+                            <p className="font-medium text-cyan-600 truncate">{enrollment.course.title}</p>
+                            <p className="ml-1 flex-shrink-0 font-normal text-gray-500">course</p>
                           </div>
                           <div className="mt-2 flex">
                             <div className="flex items-center text-sm text-gray-500">
                               <CalendarIcon className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" aria-hidden="true" />
                               <p>
-                                Turma inicia em <time dateTime={enrollment.createdAt}>
+                                Enrolled in <time dateTime={enrollment.createdAt}>
                                   {dateFormatter.format(new Date(enrollment.createdAt))}
                                 </time>
                               </p>
@@ -92,8 +94,8 @@ function Courses() {
                       </div>
                       <div className="ml-5 flex-shrink-0">
                         <Link href={`/app/courses/${enrollment.course.slug}`}>
-                          <a className="px-2 py-1 border border-transparent text-base font-medium rounded-md text-white bg-violet-600 hover:bg-violet-700">
-                            Assistir aulas
+                          <a className="px-3 py-2 border border-transparent text-base font-medium rounded-md text-white bg-cyan-500 hover:bg-cyan-600">
+                            Start learning
                           </a>
                         </Link>
                       </div>
@@ -111,7 +113,7 @@ function Courses() {
 }
 
 export const getServerSideProps = withPageAuthRequired({
-  returnTo: '/'
-})
+  returnTo: '/api/auth/login',
+});
 
-export default withApollo(Courses)
+export default withApollo(Courses);
